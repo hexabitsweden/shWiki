@@ -1,0 +1,14 @@
+_Link to existing
+
+.If you have a Linux category with a
+.wiki about bash in it, and now you
+.want to create a freeBSD category and
+.link the existing bash to it:
+
+Hit "n" and chose a new name or the existing name.
+(In this case: freeBSD). Then on the question about
+the new wiki name, type the name of the existing wiki
+(In our case: bash).
+
+.Later when you go to the freeBSD or the Linux category,
+.you will se that "bash" is showing on both places.

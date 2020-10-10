@@ -1,0 +1,20 @@
+Web Browser and html
+
+To convert the whole wiki to webpages:
+
+Press "A" for the Admin menu.
+
+Then press "4" and ENTER to build html files.
+
+To use you favorite webbrowser to browse
+the wiki:
+
+Folow the the first step and build the html files.
+After that you have to use the Admin menu again
+and choose what webbrowser you want to use.
+
+In Admin menu, just hit "9" and type in the command
+for starting your browser
+
+Later when you are in the main wiki, you can
+just hit "b" for browsing the wikis html files.

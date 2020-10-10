@@ -1,0 +1,16 @@
+_Searching i tWiki
+
+.In this example we want to search for the phrase "split".
+We hit "s" and then we type "split" and ENTER.
+
+,Result: vim
+
+Ok so now we know the phrase "split" could be found i a
+wiki named vim. But where do we find vim?
+
+.We hit "s" again and search for "vim".
+ 
+,Result: Linux
+
+Ok lets go to the category "Linux" and, voila! There it is.
+The vim wiki. :)

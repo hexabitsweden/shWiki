@@ -1,0 +1,8 @@
+_Links to htmls files etc
+
+.To create html links in a wikifile, just do:
+
+ <a href="url">Link text</a>
+
+. For example:
+ <a href="../DOCS/slask_sorteras.txt">slask_sorteras.txt in DOCS folder</a>

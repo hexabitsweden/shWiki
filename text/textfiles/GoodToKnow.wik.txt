@@ -1,0 +1,22 @@
+FreeBSD goodies
+
+Need to remove all those ^M characters from a DOS file? Try
+
+tr -d  < dosfile > newfile
+
+Cant remove a directory becouse its not empty (but it is)?
+
+chflags -R noschg /usr/jails/var/empty
+
+rm -r /usr/jails/var/empty
+
+Nicely list directorys with sizes and more:
+
+du -h /usr/home/hexabit/ | sort -rh | head
+
+Need to leave your terminal for a few minutes and don't want to logout?
+Use "lock -p". When you return, use your password as the key to unlock the
+terminal.
+
+
+
