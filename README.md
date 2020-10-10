@@ -1,13 +1,13 @@
 # shWiki 
 Easy to use wiki for the terminal
 
-![Image of TermTools](https://github.com/hexabitsweden/TermToolbox/blob/main/screenshots/main.png?raw=true)
+![Image of TermTools](https://github.com/hexabitsweden/shWiki/blob/main/screenshots/main.png?raw=true)
 
 
-![Image of TermTools](https://github.com/hexabitsweden/TermToolbox/blob/main/screenshots/2.png?raw=true)
-![Image of TermTools](https://github.com/hexabitsweden/TermToolbox/blob/main/screenshots/help.png?raw=true)
-![Image of TermTools](https://github.com/hexabitsweden/TermToolbox/blob/main/screenshots/admin.png?raw=true)
-![Image of TermTools](https://github.com/hexabitsweden/TermToolbox/blob/main/screenshots/html.png?raw=true)
+![Image of TermTools](https://github.com/hexabitsweden/shWiki/blob/main/screenshots/2.png?raw=true)
+![Image of TermTools](https://github.com/hexabitsweden/shWiki/blob/main/screenshots/help.png?raw=true)
+![Image of TermTools](https://github.com/hexabitsweden/shWiki/blob/main/screenshots/admin.png?raw=true)
+![Image of TermTools](https://github.com/hexabitsweden/shWiki/blob/main/screenshots/html.png?raw=true)
 
 ## Getting Started
 Donwload and extract. Or clone from this site.
