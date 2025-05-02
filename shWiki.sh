@@ -1,29 +1,30 @@
-red="\033[0;31m"        
-cyan="\033[1;36m"      
-green="\033[0;32m"     
-blue="\033[0;34m"  
-yellow="\e[1;33m" 
+#!/usr/bin/bash
+red="\033[0;31m"
+cyan="\033[1;36m"
+green="\033[0;32m"
+blue="\033[0;34m"
+yellow="\e[1;33m"
 black="\033[9;34m"
 brown="\033[0;33m"
 magenta="\033[0;35m"
 gray="\033[0;37m"
-bred="\e[0;30;41m" 
-bgreen="\e[0;37;42m" 
+bred="\e[0;30;41m"
+bgreen="\e[0;37;42m"
 bgreenb="\e[0;30;42m"
 byellow="\e[0;30;43m"
-none="\033[0m" 
+none="\033[0m"
 pink="\e[1;30;31m"
 bblue="\e[0;30;46m"
 bpurple="\e[0;30;45m"
 menucol="\e[0;30;43m"
-bwhite="\e[0;31;47m" 
+bwhite="\e[0;31;47m"
 white="\033[0;37m"
 #############################################
-#                                           # 
+#                                           #
 #           Terminal wiKi BETA 0.1.1        #
 #                                           #
 #             Daniel Jendinger 2013         #
-#                                           # 
+#                                           #
 #############################################
 listan=wikis/index.wik
 
@@ -34,24 +35,24 @@ searcher () {
 
 clear
 echo " "
-echo -e "$bred                Terminal Wiki               $none"  
+echo -e "$bred                Terminal Wiki               $none"
 echo -e "                            $cyan Search mode $none"
 echo " "
 echo " "
 echo " "
-echo -e "$bred       a=Admin  m=Main menu  h=Help         $none"  
+echo -e "$bred       a=Admin  m=Main menu  h=Help         $none"
 echo " "
 printf "          Enter search string:"
 read a
 
 clear
 echo " "
-echo -e "$bred                Terminal Wiki                $none"  
+echo -e "$bred                Terminal Wiki                $none"
 echo -e "$cyan                              Results: $none $yellow"
 echo " "
 grep -l "$a" wikis/*.wik | cut -f1 -d '.' | cut -f2 -d '0'
 echo -e "$none "
-echo -e "$bred               ENTER to continue             $none"  
+echo -e "$bred               ENTER to continue             $none"
 echo " "
 read a
 
@@ -62,9 +63,9 @@ admin_twiki () {
 clear
 echo " "
 STAT=`cat html/serverstatus.txt`
-echo -e "        $bred              Terminal Wiki          webbserver:$STAT  $none"  
+echo -e "        $bred              Terminal Wiki          webbserver:$STAT  $none"
 echo -e "                                    $cyan ADMIN Mode$none"
-echo -e "    $yellow     1.$red Delete$none a wikifile $none" 
+echo -e "    $yellow     1.$red Delete$none a wikifile $none"
 echo
 echo -e "    $yellow     2.$red Delete$none a Category $none"
 echo
@@ -89,7 +90,7 @@ echo
 echo -e "    $yellow     0.$blue Back$none $yellow(or ENTER) $none"
 
 echo " "
-echo -e "        $bred             Warning! Admin mode Warning!             $none"  
+echo -e "        $bred             Warning! Admin mode Warning!             $none"
 
 read a
 if [[ "$a" == "1" ]]
@@ -108,16 +109,16 @@ if [[ "$a" == "1" ]]
     sleep 1
   main
 
-elif [[ "$a" == "2" ]] 
+elif [[ "$a" == "2" ]]
  then
    printf "Name of category: "
     read b
-     rm wikis/0$b.wik 
+     rm wikis/0$b.wik
      echo "ok! Deleted..."
    sleep 1
   main
 
-elif [[ "$a" == "3" ]] 
+elif [[ "$a" == "3" ]]
  then
   printf "Rename wich category?"
    read c
@@ -127,7 +128,7 @@ elif [[ "$a" == "3" ]]
   echo -e "$bblue OK renamed.. $none"
  admin_twiki
 
-elif [[ "$a" == "4" ]] 
+elif [[ "$a" == "4" ]]
  then
   printf "         Press ENTER to build html-files"
    read c
@@ -139,7 +140,7 @@ elif [[ "$a" == "4" ]]
   read a
  admin_twiki
 
-elif [[ "$a" == "10" ]] 
+elif [[ "$a" == "10" ]]
  then
   printf "         Press ENTER to build text-files"
    read c
@@ -153,12 +154,12 @@ elif [[ "$a" == "10" ]]
   touch wikis/files.txt
  admin_twiki
 
-elif [[ "$a" == "5" ]] 
+elif [[ "$a" == "5" ]]
  then
   printf "         Press ENTER to start a webserver on port 8000..."
    read c
     cd html
-    nohup /usr/local/bin/python HTTPserver.py >> http.log &
+    nohup python3 -m http.server >> http.log &
      echo "ON " > serverstatus.txt
    echo " "
   echo -e "         $bblue OK! Server started.. ENTER to continue..$none"
@@ -166,12 +167,12 @@ elif [[ "$a" == "5" ]]
   read a
  admin_twiki
 
-elif [[ "$a" == "6" ]] 
+elif [[ "$a" == "6" ]]
  then
   printf "         Press ENTER to STOP webserver..."
    read c
     cd html
-   kill -9 `ps ax | grep HTTP | grep -v grep | awk '{ print $1 }'` 2> /dev/null
+   kill -9 `ps ax | grep http.server | grep -v grep | awk '{ print $1 }'` 2> /dev/null
    echo " "
      echo "OFF" > serverstatus.txt
   echo -e "         $bblue OK! Server stopped.. ENTER to continue..$none"
@@ -179,7 +180,7 @@ elif [[ "$a" == "6" ]]
   read a
  admin_twiki
 
-elif [[ "$a" == "7" ]] 
+elif [[ "$a" == "7" ]]
  then
     echo -e "$yellow ENTER to continue.... $none"
     tail html/http.log
@@ -187,9 +188,9 @@ elif [[ "$a" == "7" ]]
    echo " "
  admin_twiki
 
-elif [[ "$a" == "8" ]] 
+elif [[ "$a" == "8" ]]
  then
-	 printf " Witch editor (eg:vim,vi,nano) do you want to use: " 
+	 printf " Witch editor (eg:vim,vi,nano) do you want to use: "
    read c
    echo " "
   echo -e "         $bblue OK! Setting default editor to:$none $yellow $c $none"
@@ -198,9 +199,9 @@ elif [[ "$a" == "8" ]]
   read a
  admin_twiki
 
-elif [[ "$a" == "9" ]] 
+elif [[ "$a" == "9" ]]
  then
-	 printf " Witch webbrowser (eg:firefox,lynx,elinks etc) do you want to use: " 
+	 printf " Witch webbrowser (eg:firefox,lynx,elinks etc) do you want to use: "
    read c
    echo " "
   echo -e "         $bblue OK! Setting default browser to:$none $yellow $c $none"
@@ -209,16 +210,16 @@ elif [[ "$a" == "9" ]]
   read a
  admin_twiki
 
-elif [[ "$a" == "11" ]] 
+elif [[ "$a" == "11" ]]
  then
-	 printf " Press ENTER to fetch emails... " 
+	 printf " Press ENTER to fetch emails... "
    read c
    echo " "
   echo " DONE! Press ENTER to continue...."
   read a
  admin_twiki
 
-elif [[ "$a" == "0" ]] 
+elif [[ "$a" == "0" ]]
  then
   main
 else
@@ -228,7 +229,7 @@ fi
 
 write_new () {
 clear
-echo -e "        $bred                  Terminal Wiki                  $none"  
+echo -e "        $bred                  Terminal Wiki                  $none"
 echo -e "                               $yellow New Category..$none"
 echo
 echo "(Use existing category or make a new by typing its name)"
@@ -238,7 +239,7 @@ read a
 #touch 0$a.wik
 printf "Name for wikifile:"
 read b
-echo $b.wik >> wikis/0$a.wik 
+echo $b.wik >> wikis/0$a.wik
 $EDITOR wikis/$b.wik
 main
 }
@@ -246,14 +247,14 @@ main
 cat_subindex () {
 clear
 echo " "
-echo -e "        $bred                Terminal Wiki                $none"  
+echo -e "        $bred                Terminal Wiki                $none"
 echo -e "                             Category:$cyan$FNAME0$none "
 echo " "
 parse_category
-echo -e "         $cyan 0. $yellow Back (or Enter)"  
+echo -e "         $cyan 0. $yellow Back (or Enter)"
 echo " "
 echo " "
-echo -e "        $bred     a=Admin  s=search  b=browser  h=Help    $none"  
+echo -e "        $bred     a=Admin  s=search  b=browser  h=Help    $none"
 echo " "
 printf "          Which subject:"
 read a
@@ -262,27 +263,27 @@ if [[ "$a" == "n" ]]
  then
   write_new
 
-elif [[ "$a" == "a" ]] 
+elif [[ "$a" == "a" ]]
  then
   admin_twiki
 
-elif [[ "$a" == "0" ]] 
+elif [[ "$a" == "0" ]]
  then
-  main 
+  main
 
-elif [[ "$a" == "s" ]] 
+elif [[ "$a" == "s" ]]
  then
   searcher
 
-elif [[ "$a" == "h" ]] 
+elif [[ "$a" == "h" ]]
  then
-  helper 
+  helper
 
- elif [[ "$a" == "b" ]] 
+ elif [[ "$a" == "b" ]]
  then
-  browse 
+  browse
 
-elif [[ "$a" == "" ]] 
+elif [[ "$a" == "" ]]
  then
   main
 
@@ -296,8 +297,8 @@ clear
 DATE=`ls -l wikis/$FNAME | cut -f6 -d ' '`
 printf "                                          File:"
 echo -e "$cyan $FNAME"
-echo 
-echo -e " $bwhite                         Last edit:$DATE                         $none" 
+echo
+echo -e " $bwhite                         Last edit:$DATE                         $none"
 echo -e $brown
 
  cat wikis/$FNAME | while read line
@@ -334,21 +335,21 @@ echo -e $brown
 
     else
       color=$brown
-        echo -e $color$line  
+        echo -e $color$line
        MEETER=`expr $MEETER + 1`
      fi
 done
 
 
 echo " "
-echo -e " $bwhite           Press ENTER for main menu or 'e' for edit           $none" 
+echo -e " $bwhite           Press ENTER for main menu or 'e' for edit           $none"
 read a
 
 if [[ "$a" == "e" ]]
  then
-   $EDITOR wikis/$FNAME 
+   $EDITOR wikis/$FNAME
 
-elif [[ "$a" == "a" ]] 
+elif [[ "$a" == "a" ]]
  then
   admin_twiki
 else
@@ -368,8 +369,8 @@ ls wikis/0* > wikis/index.wik
       LINE1=`echo $LINE\\`
       HLINE=`echo $LINE\\ | cut -f2 -d ':' `
       HLINE2=`echo $LINE\\ | cut -f2 -d ':' | cut -f1 -d '.'`
-      echo -e "         $cyan $MEETER. $none $yellow$HLINE2  $none" 
-     echo  "$MEETER:$HLINE" >> wikis/files.txt 
+      echo -e "         $cyan $MEETER. $none $yellow$HLINE2  $none"
+     echo  "$MEETER:$HLINE" >> wikis/files.txt
    done
 }
 
@@ -381,8 +382,8 @@ parse_list () {
       LINE1=`echo $LINE\\`
       HLINE=`echo $LINE\\ | cut -f2 -d ':' | cut -d '0' -f2 | cut -f1 -d '.'`
       HLINE0=`echo $LINE\\ | cut -f2 -d ':'`
-      echo -e "         $yellow $MEETER. $none $none$HLINE" 
-     echo  "$MEETER:$HLINE0" >> wikis/files.txt 
+      echo -e "         $yellow $MEETER. $none $none$HLINE"
+     echo  "$MEETER:$HLINE0" >> wikis/files.txt
    done
 }
 
@@ -408,11 +409,11 @@ ls wikis/0* > wikis/index.wik
 clear
 STAT=`cat html/serverstatus.txt`
 echo " "
-echo -e "$yellow        [$bblue              Terminal Wiki           webbserver:$STAT  $none$yellow]$none"  
+echo -e "$yellow        [$bblue              Terminal Wiki           webbserver:$STAT  $none$yellow]$none"
 echo " "
 parse_list
 echo " "
-echo -e "$yellow        [$none$bblue     a=Admin  b=browser s=Search  h=Help  n=New      $none$yellow]$none"  
+echo -e "$yellow        [$none$bblue     a=Admin  b=browser s=Search  h=Help  n=New      $none$yellow]$none"
 echo -e "$pink "
 printf "          Which category:"
 read a
@@ -421,27 +422,27 @@ if [[ "$a" == "n" ]]
  then
   write_new
 
-elif [[ "$a" == "a" ]] 
+elif [[ "$a" == "a" ]]
  then
   admin_twiki
 
-elif [[ "$a" == "s" ]] 
+elif [[ "$a" == "s" ]]
  then
   searcher
 
-elif [[ "$a" == "h" ]] 
+elif [[ "$a" == "h" ]]
  then
- helper 
+ helper
 
-elif [[ "$a" == "b" ]] 
+elif [[ "$a" == "b" ]]
  then
   browse
 
-elif [[ "$a" == "0" ]] 
+elif [[ "$a" == "0" ]]
  then
   main
 
-elif [[ "$a" == "" ]] 
+elif [[ "$a" == "" ]]
  then
   main
 
